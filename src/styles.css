@@ -1,0 +1,113 @@
+/* Body */
+
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(180, 180, 180);
+  font-size: 16px;
+}
+
+/* Body */
+
+/* General */
+
+.main {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+.div-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header,
+.footer {
+  padding: 1rem;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* General */
+
+/* Button */
+
+button {
+  cursor: pointer;
+}
+
+.defaultButton {
+  border: rgb(160, 160, 160) 1px solid;
+  border-radius: 3px;
+  padding: 4px 10px;
+}
+
+.defaultButton:hover {
+  filter: brightness(85%);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.defaultTextArea {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: normal;
+  color: inherit;
+}
+
+/* Button */
+
+/* Table */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  height: 100%;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.table th {
+  background-color: rgb(160, 160, 160);
+}
+
+.table td {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  border-bottom: rgb(228, 228, 228) 1px solid;
+}
+
+td nav a {
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+}
+
+td nav a :hover {
+  color: rgb(155, 155, 155);
+  transition: 0.3s;
+}
+
+/* Table */
+
+/* Footer */
+
+.footer {
+  background-color: black;
+  height: 10%;
+}
+
+/* Footer */
