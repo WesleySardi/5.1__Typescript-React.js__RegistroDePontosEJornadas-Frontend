@@ -1,14 +1,11 @@
-import { Routes, Route } from "react-router-dom";
-import TimeEntriesList from "../../../pages/TimeEntries/TimeEntriesList/TimeEntriesList";
-import TimeEntryForm from "../../../pages/TimeEntries/TimeEntriesForm/TimeEntryForm";
+import { Route, Routes } from "react-router-dom";
+import TimeEntries from "../../../pages/TimeEntries/TimeEntries";
 
 export default function Body() {
   return (
     <main className="main">
       <Routes>
-        <Route path="/" element={<TimeEntriesList />} />
-        <Route path="/new" element={<TimeEntryForm />} />
-        <Route path="/edit/:id" element={<TimeEntryForm />} />
+        <Route path="/*" element={<TimeEntries />} />
       </Routes>
     </main>
   );

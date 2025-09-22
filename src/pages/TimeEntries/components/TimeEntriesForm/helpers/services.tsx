@@ -1,5 +1,5 @@
-import { api } from "../../../../api";
-import type { TimeEntry, TimeEntryCreateDTO } from "../../../../types";
+import { api } from "../../../../../api";
+import type { TimeEntry, TimeEntryCreateDTO } from "../../../../../types";
 
 export async function getTimeEntry(id: string) {
   const res = await api.get<TimeEntry>(`/timeentries/${id}`);

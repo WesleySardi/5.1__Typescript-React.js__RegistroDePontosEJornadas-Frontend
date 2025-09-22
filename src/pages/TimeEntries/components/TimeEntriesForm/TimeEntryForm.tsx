@@ -4,16 +4,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { TimeEntryCreateDTO } from "../../../types";
 import "./styles.css";
-import FormField from "../../../components/formField/FormField";
-import TextAreaField from "../../../components/textAreaField/TextAreaField";
 import {
   createTimeEntry,
   getTimeEntry,
   updateTimeEntry,
 } from "./helpers/services";
 import TimeEntryFormActions from "./components/TimeEntryFormActions.tsx/TimeEntryFormActions";
+import type { TimeEntryCreateDTO } from "../../../../types";
+import FormField from "../../../../components/formField/FormField";
+import TextAreaField from "../../../../components/textAreaField/TextAreaField";
 
 const schema = z.object({
   employeeId: z.string().min(1, "Obrigatório"),

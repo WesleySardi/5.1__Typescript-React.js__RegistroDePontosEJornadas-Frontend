@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import type { TimeEntry } from "../../../types";
-import FilterButton from "../../../components/buttons/FilterButton/FilterButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "./styles.css";
 
 import { useNavigate } from "react-router-dom";
-import DeleteButton from "../../../components/buttons/DeleteButton/DeleteButton";
-import EditButton from "../../../components/buttons/EditButton/EditButton";
 import { deleteTimeEntry, getTimeEntries } from "./helpers/services";
-import LoadingOrErrorInfo from "../../../components/loadingOrError/LoadingOrErrorInfo";
+import type { TimeEntry } from "../../../../types";
+import LoadingOrErrorInfo from "../../../../components/loadingOrError/LoadingOrErrorInfo";
+import FilterButton from "../../../../components/buttons/FilterButton/FilterButton";
+import EditButton from "../../../../components/buttons/EditButton/EditButton";
+import DeleteButton from "../../../../components/buttons/DeleteButton/DeleteButton";
 
 export default function TimeEntriesList() {
   const [page, setPage] = useState(1);
