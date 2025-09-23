@@ -1,24 +1,25 @@
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useNavigate, useParams } from "react-router-dom";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import "./styles.css";
 import {
   createTimeEntry,
   getTimeEntry,
   updateTimeEntry,
 } from "./helpers/services";
-import TimeEntryFormActions from "./components/TimeEntryFormActions.tsx/TimeEntryFormActions";
+
+import "./styles.css";
+import { z } from "zod";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate, useParams } from "react-router-dom";
 import type { TimeEntryCreateDTO } from "../../../../types";
-import FormField from "../../../../components/formField/FormField";
-import TextAreaField from "../../../../components/textAreaField/TextAreaField";
+import FormActions from "./components/FormActions/FormActions";
+import NormalInputs from "./components/NormalInputs/NormalInputs";
+import SpecificInputs from "./components/SpecificInputs/SpecificInputs";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const schema = z.object({
-  employeeId: z.string().min(1, "Obrigatório"),
-  employeeName: z.string().min(1, "Obrigatório"),
-  timestamp: z.string().min(1, "Obrigatório"),
+  employeeId: z.string().min(1, "*"),
+  employeeName: z.string().min(1, "*"),
+  timestamp: z.string().min(1, "*"),
   type: z.enum(["Entrada", "Saída", "Intervalo"]),
   location: z.string().optional(),
   notes: z.string().optional(),
@@ -45,26 +46,6 @@ export default function TimeEntryForm() {
     queryFn: () => (id ? getTimeEntry(id) : Promise.resolve(null)),
     enabled: !!id,
   });
-
-  useEffect(() => {
-    if (!existing) return;
-
-    const dt: Date = new Date(existing.timestamp);
-    const localDatetime: string = dt.toISOString().slice(0, 16);
-
-    const fields = {
-      employeeId: existing.employeeId,
-      employeeName: existing.employeeName,
-      timestamp: localDatetime,
-      type: existing.type,
-      location: existing.location ?? "",
-      notes: existing.notes ?? "",
-    };
-
-    Object.entries(fields).forEach(([key, value]) =>
-      setValue(key as keyof FormData, value)
-    );
-  }, [existing, setValue]);
 
   const createMut = useMutation({
     mutationFn: (payload: TimeEntryCreateDTO) =>
@@ -96,7 +77,7 @@ export default function TimeEntryForm() {
     },
   });
 
-  function onSubmit(data: FormData) {
+  const onSubmit = (data: FormData) => {
     const payload: TimeEntryCreateDTO = { ...data };
 
     if (id) {
@@ -104,77 +85,44 @@ export default function TimeEntryForm() {
     } else {
       createMut.mutate(payload);
     }
-  }
+  };
+
+  useEffect(() => {
+    if (!existing) return;
+
+    const dt: Date = new Date(existing.timestamp);
+    const localDatetime: string = dt.toISOString().slice(0, 16);
+
+    const fields = {
+      employeeId: existing.employeeId,
+      employeeName: existing.employeeName,
+      timestamp: localDatetime,
+      type: existing.type,
+      location: existing.location ?? "",
+      notes: existing.notes ?? "",
+    };
+
+    Object.entries(fields).forEach(([key, value]) =>
+      setValue(key as keyof FormData, value)
+    );
+  }, [existing, setValue]);
 
   return (
     <div className="mainDiv">
       <h2>{id ? "Editar" : "Novo"} registro</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <FormField
-          label="Código"
-          error={errors.employeeId}
-          className={"mainFormDivs"}
-        >
-          <input
-            placeholder="Digite o código do registro"
-            className="normalInputs"
-            {...register("employeeId")}
-          />
-        </FormField>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="formDiv">
+          <div className="firstDiv">
+            <NormalInputs {...{ errors, register }} />
+          </div>
 
-        <FormField
-          label="Nome"
-          error={errors.employeeName}
-          className="mainFormDivs"
-        >
-          <input
-            placeholder="Digite o nome do registro"
-            className="normalInputs"
-            {...register("employeeName")}
-          />
-        </FormField>
+          <div className="secondDiv">
+            <SpecificInputs {...{ errors, register }} />
+          </div>
+        </div>
 
-        <FormField label="Local (opcional)" className="mainFormDivs">
-          <input
-            placeholder="Digite o local do registro"
-            className="normalInputs"
-            {...register("location")}
-          />
-        </FormField>
-
-        <TextAreaField
-          label="Observações (opcional)"
-          placeholder="Digite suas observações"
-          register={register}
-          name="notes"
-          error={errors.notes}
-          classNameDiv={"mainFormDivs"}
-          classNameTextArea={"defaultTextArea normalInputs"}
-        />
-
-        <FormField
-          label="Data"
-          error={errors.timestamp}
-          className="specificDivs"
-        >
-          <input
-            placeholder="Selecione a data"
-            className="dateInput"
-            type="datetime-local"
-            {...register("timestamp")}
-          />
-        </FormField>
-
-        <FormField label="Tipo" error={errors.type} className="mainFormDivs">
-          <select className="typeSelect" {...register("type")}>
-            <option value="Entrada">Entrada</option>
-            <option value="Saída">Saída</option>
-            <option value="Intervalo">Intervalo</option>
-          </select>
-        </FormField>
-
-        <TimeEntryFormActions {...{ createMut, updateMut }} />
+        <FormActions {...{ createMut, updateMut }} />
       </form>
     </div>
   );

@@ -1,0 +1,42 @@
+.mainFormDivs {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+  position: relative;
+}
+
+.mainFormDivs label {
+  margin-bottom: 2%;
+}
+
+.mainFormDivs div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+}
+
+.mainFormDivs span {
+  display: flex;
+  position: absolute;
+  right: 0;
+  color: red;
+}
+
+.mainFormDivs input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.mainFormDivs textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+}

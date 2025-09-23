@@ -1,14 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import "./styles.css";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { SaveOrCreateButtonProps } from "./interfaces/SaveOrCreateButtonPropsInterface";
 
 export default function SaveOrCreateButton({
   createMut,
   updateMut,
-}: {
-  createMut: any;
-  updateMut: any;
-}) {
+}: SaveOrCreateButtonProps) {
   return (
     <button
       className="saveButton"

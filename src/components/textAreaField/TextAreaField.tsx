@@ -1,12 +1,4 @@
-type TextAreaFieldProps = {
-  label: string;
-  placeholder?: string;
-  register: any;
-  name: string;
-  error?: any;
-  classNameDiv: string;
-  classNameTextArea: string;
-};
+import type { ITextAreaFieldProps } from "./interfaces/TextAreaFieldPropsInterface";
 
 export default function TextAreaField({
   label,
@@ -16,7 +8,7 @@ export default function TextAreaField({
   error,
   classNameDiv,
   classNameTextArea,
-}: TextAreaFieldProps) {
+}: ITextAreaFieldProps) {
   return (
     <div className={`${classNameDiv ?? ""}`}>
       <div>

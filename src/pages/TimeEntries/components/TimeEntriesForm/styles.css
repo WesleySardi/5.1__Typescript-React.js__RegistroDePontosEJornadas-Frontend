@@ -4,6 +4,10 @@
   border-inline: 1px solid rgb(207, 207, 207);
   box-shadow: inset 4px 0 4px -4px rgba(0, 0, 0, 0.2),
     inset -4px 0 4px -4px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .mainDiv h2 {
@@ -17,90 +21,31 @@
   align-items: center;
 }
 
-.specificDivs {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 2%;
-}
-
-.specificDivs label {
-  margin-bottom: 2%;
-}
-
-.specificDivs div {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  text-align: center;
-  align-items: center;
-}
-
-.specificDivs span {
-  display: flex;
-  margin-top: auto;
-}
-
-.specificDivs input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.mainFormDivs {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 2%;
-}
-
-.mainFormDivs label {
-  margin-bottom: 2%;
-}
-
-.mainFormDivs div {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  text-align: center;
-  align-items: center;
-}
-
-.mainFormDivs span {
-  display: flex;
-  margin-top: auto;
-}
-
-.mainFormDivs input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.mainFormDivs textarea {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.typeSelect {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
 .dateInput {
-  width: 50%;
-  padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+}
+
+.firstDiv,
+.secondDiv {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 20px;
+}
+
+.form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.formDiv {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  width: 80%;
+  justify-content: center;
 }

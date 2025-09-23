@@ -1,26 +1,22 @@
-import React from "react";
 import "./styles.css";
-
-type FormFieldProps = {
-  label: string;
-  children: React.ReactNode;
-  error?: any;
-  className?: string;
-};
+import type { IFormFieldProps } from "./interfaces/FormFieldPropsInterface";
 
 export default function FormField({
   label,
   children,
   className,
   error = null,
-}: FormFieldProps) {
+}: IFormFieldProps) {
   return (
     <div className={`${className ?? ""}`}>
       <div>
-        <label>{label}</label>
+        <div>
+          <label>{label}</label>
+          {error && <span>{error.message}</span>}
+        </div>
+
         {children}
       </div>
-      {error && <span>{error.message}</span>}
     </div>
   );
 }

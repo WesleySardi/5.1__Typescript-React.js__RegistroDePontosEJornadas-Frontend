@@ -1,16 +1,13 @@
+import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faXmark } from "@fortawesome/free-solid-svg-icons";
-import "./styles.css";
+import type { ILoadingOrErrorInfoProps } from "./interfaces/LoadingOrErrorInfoPropsInterface";
 
 export default function LoadingOrErrorInfo({
   isLoading,
   isError,
   component,
-}: {
-  isLoading: boolean;
-  isError: boolean;
-  component: React.ReactNode;
-}) {
+}: ILoadingOrErrorInfoProps) {
   return (
     <>
       {isLoading || isError ? (

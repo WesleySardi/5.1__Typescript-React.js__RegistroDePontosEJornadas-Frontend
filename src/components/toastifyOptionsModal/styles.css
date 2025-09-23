@@ -1,0 +1,42 @@
+.toastifyMainDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toastifyButtonDivs {
+  display: flex;
+  width: 100%;
+}
+
+.toastifyMainDiv button {
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 3% 5%;
+  color: white;
+  margin-right: 3%;
+  margin-top: 10%;
+}
+
+.deleteToastifyButton {
+  background-color: red;
+}
+
+.cancelToastifyButton {
+  background-color: rgb(134, 134, 134);
+}
+
+.confirmToastifyButton {
+  background-color: rgb(0, 148, 7);
+}
+
+.toastifyMessageDivs {
+  display: flex;
+}
+
+.toastifyIconMessage {
+  display: flex;
+  align-items: center;
+  padding-right: 5%;
+  padding-left: 2%;
+}

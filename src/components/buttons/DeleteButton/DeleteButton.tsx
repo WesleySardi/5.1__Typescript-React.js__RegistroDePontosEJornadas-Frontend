@@ -1,27 +1,47 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import "./styles.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { ToastifyOptionTypes } from "../../../enums/ToastifyOptionTypes";
+import ToastifyOptionsModal from "../../toastifyOptionsModal/ToastifyOptionsModal";
 
 export default function DeleteButton({
   item,
   deleteMethod,
 }: {
   item: any;
-  deleteMethod: any;
+  deleteMethod: (id: string) => Promise<any>;
 }) {
   const queryClient = useQueryClient();
 
   const del = useMutation({
     mutationFn: (id: string) => deleteMethod(id),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["timeEntries"] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["timeEntries"] });
+      toast.success("Registro excluído com sucesso!");
+    },
+    onError: () => {
+      toast.error("Erro ao excluir registro!");
+    },
   });
 
   function handleDelete(id: string) {
-    if (confirm("Deseja excluir este registro?")) {
-      del.mutate(id);
-    }
+    toast(
+      ({ closeToast }) => (
+        <ToastifyOptionsModal
+          message="Tem certeza que deseja excluir este item?"
+          type={ToastifyOptionTypes.Delete}
+          method={() => {
+            del.mutate(id);
+            closeToast?.();
+          }}
+          closeToast={closeToast}
+        />
+      ),
+      { autoClose: false }
+    );
   }
 
   return (

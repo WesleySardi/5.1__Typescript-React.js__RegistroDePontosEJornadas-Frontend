@@ -1,0 +1,46 @@
+.specificFormDivs {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+  position: relative;
+}
+
+.specificFormDivs label {
+  margin-bottom: 2%;
+}
+
+.specificFormDivs div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.specificFormDivs span {
+  display: flex;
+  margin-top: auto;
+}
+
+.specificFormDivs input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 170px;
+}
+
+.specificFormDivs span {
+  display: flex;
+  position: absolute;
+  right: 0;
+  color: red;
+}
+
+.specificFormDivs select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
