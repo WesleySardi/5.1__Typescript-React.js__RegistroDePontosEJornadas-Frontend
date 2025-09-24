@@ -20,7 +20,7 @@ const schema = z.object({
   employeeId: z.string().min(1, "*"),
   employeeName: z.string().min(1, "*"),
   timestamp: z.string().min(1, "*"),
-  type: z.enum(["Entrada", "Saída", "Intervalo"]),
+  type: z.enum(["1", "2", "3"]),
   location: z.string().optional(),
   notes: z.string().optional(),
 });
@@ -78,7 +78,7 @@ export default function TimeEntryForm() {
   });
 
   const onSubmit = (data: FormData) => {
-    const payload: TimeEntryCreateDTO = { ...data };
+    const payload: TimeEntryCreateDTO = { ...data, type: Number(data.type) };
 
     if (id) {
       updateMut.mutate({ id, payload });
@@ -97,7 +97,7 @@ export default function TimeEntryForm() {
       employeeId: existing.employeeId,
       employeeName: existing.employeeName,
       timestamp: localDatetime,
-      type: existing.type,
+      type: existing.type.toString(),
       location: existing.location ?? "",
       notes: existing.notes ?? "",
     };

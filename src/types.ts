@@ -3,7 +3,7 @@ export type TimeEntry = {
   employeeId: string;
   employeeName: string;
   timestamp: string;
-  type: "Entrada" | "Saída" | "Intervalo";
+  type: number;
   location?: string;
   notes?: string;
   createdAt: string;

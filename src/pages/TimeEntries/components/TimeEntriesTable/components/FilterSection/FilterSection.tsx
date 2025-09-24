@@ -21,9 +21,9 @@ export default function FilterSection({
           onChange={(e) => setTypeFilter(e.target.value || undefined)}
         >
           <option value="">Todos</option>
-          <option value="Entrada">Entrada</option>
-          <option value="Saída">Saída</option>
-          <option value="Intervalo">Intervalo</option>
+          <option value="1">Entrada</option>
+          <option value="2">Saída</option>
+          <option value="3">Intervalo</option>
         </select>
       </label>
 
