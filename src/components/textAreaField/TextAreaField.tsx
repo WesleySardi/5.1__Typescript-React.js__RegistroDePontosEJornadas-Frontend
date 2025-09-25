@@ -8,6 +8,7 @@ export default function TextAreaField({
   error,
   classNameDiv,
   classNameTextArea,
+  maxLength = 50,
 }: ITextAreaFieldProps) {
   return (
     <div className={`${classNameDiv ?? ""}`}>
@@ -16,6 +17,7 @@ export default function TextAreaField({
         <textarea
           className={`${classNameTextArea ?? ""}`}
           placeholder={placeholder}
+          maxLength={maxLength}
           {...register(name)}
         ></textarea>
       </div>

@@ -6,4 +6,5 @@ export interface ITextAreaFieldProps {
   error?: any;
   classNameDiv: string;
   classNameTextArea: string;
+  maxLength?: number;
 }

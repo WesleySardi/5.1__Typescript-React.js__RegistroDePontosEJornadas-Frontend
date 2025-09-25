@@ -21,6 +21,7 @@ export default function NormalInputs({
         <input
           placeholder="Digite o código do registro"
           className="normalInputs"
+          maxLength={20}
           {...register("employeeId")}
         />
       </FormField>
@@ -32,6 +33,7 @@ export default function NormalInputs({
         <input
           placeholder="Digite o nome do registro"
           className="normalInputs"
+          maxLength={70}
           {...register("employeeName")}
         />
       </FormField>
@@ -39,6 +41,7 @@ export default function NormalInputs({
         <input
           placeholder="Digite o local do registro"
           className="normalInputs"
+          maxLength={100}
           {...register("location")}
         />
       </FormField>
@@ -50,6 +53,7 @@ export default function NormalInputs({
         error={errors.notes}
         classNameDiv={"mainFormDivs"}
         classNameTextArea={"defaultTextArea normalInputs"}
+        maxLength={200}
       />
     </div>
   );
