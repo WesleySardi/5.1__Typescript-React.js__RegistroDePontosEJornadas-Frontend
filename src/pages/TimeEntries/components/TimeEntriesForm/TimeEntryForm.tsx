@@ -117,7 +117,9 @@ export default function TimeEntryForm() {
 
   return (
     <div className="mainDiv">
-      <h2>{id ? "Editar" : "Novo"} registro</h2>
+      <div className="titleDiv">
+        <h2>{id ? "Editar" : "Novo"} registro</h2>
+      </div>
 
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="formDiv">

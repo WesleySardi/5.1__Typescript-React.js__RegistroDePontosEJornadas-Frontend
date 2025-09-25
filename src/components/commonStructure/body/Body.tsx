@@ -1,3 +1,4 @@
+import "./styles.css";
 import { Route, Routes } from "react-router-dom";
 import TimeEntries from "../../../pages/TimeEntries/TimeEntries";
 

@@ -8,6 +8,9 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
+  background-color: #f5f5f5;
+  padding: 0% 2% 2% 2%;
+  border-radius: 5px;
 }
 
 .filters {
@@ -48,10 +51,10 @@
 
 .dateFilterInput {
   margin: 0;
-  padding: 0.2rem 0.5rem;
+  padding: 4px 8px;
   border: 1px solid rgb(185, 185, 185);
   border-radius: 5px;
-  width: 10rem;
+  width: 160px;
   min-width: 0;
   box-sizing: border-box;
 }
@@ -60,5 +63,5 @@
   margin: auto;
   border: 1px solid rgb(185, 185, 185);
   border-radius: 5px;
-  padding: 0.2rem 0.1rem;
+  padding: 4px 2px;
 }

@@ -1,12 +1,12 @@
 .header {
   background: rgb(33, 31, 53);
-  padding: 1rem;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
   text-align: center;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .header div {
@@ -29,7 +29,7 @@
 .header nav a {
   color: rgb(255, 255, 255);
   text-decoration: none;
-  font-size: 17px;
+  font-size: 1.2rem;
 }
 
 .header nav a:hover {
@@ -39,5 +39,5 @@
 
 .header span {
   color: rgb(255, 255, 255);
-  font-size: 17px;
+  font-size: 1rem;
 }

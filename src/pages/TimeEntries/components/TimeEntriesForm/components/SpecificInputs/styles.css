@@ -24,10 +24,10 @@
 }
 
 .specificFormDivs input {
-  padding: 0.5rem;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 0.9rem;
   width: 170px;
 }
 
@@ -39,10 +39,10 @@
 }
 
 .specificFormDivs select {
-  padding: 0.5rem;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
 .secondDiv {
