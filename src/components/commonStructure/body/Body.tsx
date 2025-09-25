@@ -6,7 +6,7 @@ export default function Body() {
   return (
     <main className="main">
       <Routes>
-        <Route path="/*" element={<TimeEntries />} />
+        <Route path="/timeEntries*" element={<TimeEntries />} />
       </Routes>
     </main>
   );

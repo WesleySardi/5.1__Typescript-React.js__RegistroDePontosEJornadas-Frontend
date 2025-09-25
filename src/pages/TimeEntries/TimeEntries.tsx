@@ -5,9 +5,9 @@ import TimeEntriesTable from "./components/TimeEntriesTable/TimeEntriesTable";
 export default function TimeEntries() {
   return (
     <Routes>
-      <Route path="/" element={<TimeEntriesTable />} />
-      <Route path="new" element={<TimeEntryForm />} />
-      <Route path="edit/:id" element={<TimeEntryForm />} />
+      <Route path="/list" element={<TimeEntriesTable />} />
+      <Route path="/list/new" element={<TimeEntryForm />} />
+      <Route path="/list/edit/:id" element={<TimeEntryForm />} />
     </Routes>
   );
 }

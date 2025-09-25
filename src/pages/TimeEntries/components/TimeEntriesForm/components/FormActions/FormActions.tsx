@@ -9,8 +9,10 @@ export default function FormActions({
 }: SaveOrCreateButtonProps) {
   return (
     <div className="saveAndCancelDiv">
-      <CancelButton />
-      <SaveOrCreateButton {...{ createMut, updateMut }} />
+      <div className="secondSaveAndCancelDiv">
+        <CancelButton />
+        <SaveOrCreateButton {...{ createMut, updateMut }} />
+      </div>
     </div>
   );
 }

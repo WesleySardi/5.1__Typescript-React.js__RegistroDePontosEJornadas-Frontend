@@ -13,9 +13,9 @@ export default function Header() {
         <h1>BMA - Time Entries</h1>
       </div>
       <nav>
-        <Link to="/">Lista</Link>
+        <Link to="/timeEntries/list">Lista</Link>
         <span> | </span>
-        <Link to="/new">Novo</Link>
+        <Link to="/timeEntries/list/new">Novo</Link>
       </nav>
     </header>
   );

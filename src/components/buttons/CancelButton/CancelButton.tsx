@@ -8,7 +8,7 @@ export default function CancelButton() {
     <button
       className="cancelButton"
       type="button"
-      onClick={() => navigate("/")}
+      onClick={() => navigate("/timeEntries/list")}
     >
       Cancelar
     </button>

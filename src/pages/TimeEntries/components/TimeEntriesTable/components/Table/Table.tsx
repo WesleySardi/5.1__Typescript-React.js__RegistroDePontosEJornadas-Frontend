@@ -28,7 +28,9 @@ export default function Table({ items }: { items: TimeEntry[] }) {
               <td>{new Date(item.timestamp).toLocaleString()}</td>
               <td>{item.type}</td>
               <td>
-                <EditButton method={() => navigate(`/edit/${item.id}`)} />
+                <EditButton
+                  method={() => navigate(`/timeEntries/list/edit/${item.id}`)}
+                />
                 <span> | </span>
                 <DeleteButton item={item} deleteMethod={deleteTimeEntry} />
               </td>

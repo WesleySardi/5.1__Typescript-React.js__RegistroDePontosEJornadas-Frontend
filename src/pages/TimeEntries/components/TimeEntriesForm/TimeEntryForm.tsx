@@ -55,7 +55,7 @@ export default function TimeEntryForm() {
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["timeEntries"] });
-      navigate("/");
+      navigate("/timeEntries/list");
     },
   });
 
@@ -77,7 +77,7 @@ export default function TimeEntryForm() {
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["timeEntries"] });
-      navigate("/");
+      navigate("/timeEntries/list");
     },
   });
 
