@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { deleteTimeEntry } from "../../helpers/services";
 import EditButton from "../../../../../../components/buttons/EditButton/EditButton";
 import DeleteButton from "../../../../../../components/buttons/DeleteButton/DeleteButton";
-import { TimeEntriesTypesReverse } from "../../helpers/utils";
 import type { TimeEntry } from "../../../../../../types";
 
 export default function Table({ items }: { items: TimeEntry[] }) {
@@ -27,7 +26,7 @@ export default function Table({ items }: { items: TimeEntry[] }) {
               <td>{item.employeeId}</td>
               <td>{item.employeeName}</td>
               <td>{new Date(item.timestamp).toLocaleString()}</td>
-              <td>{TimeEntriesTypesReverse[item.type]}</td>
+              <td>{item.type}</td>
               <td>
                 <EditButton method={() => navigate(`/edit/${item.id}`)} />
                 <span> | </span>

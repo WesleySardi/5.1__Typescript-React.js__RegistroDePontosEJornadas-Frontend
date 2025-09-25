@@ -27,9 +27,9 @@ export default function SpecificInputs({
 
       <FormField label="Tipo" error={errors.type} className="specificFormDivs">
         <select {...register("type")}>
-          <option value="1">Entrada</option>
-          <option value="2">Saída</option>
-          <option value="3">Intervalo</option>
+          <option value="Entrada">Entrada</option>
+          <option value="Saida">Saída</option>
+          <option value="Intervalo">Intervalo</option>
         </select>
       </FormField>
     </div>

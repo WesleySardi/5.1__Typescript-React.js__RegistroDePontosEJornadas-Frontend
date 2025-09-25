@@ -3,7 +3,7 @@ export type TimeEntry = {
   employeeId: string;
   employeeName: string;
   timestamp: string;
-  type: number;
+  type: string;
   location?: string;
   notes?: string;
   createdAt: string;
