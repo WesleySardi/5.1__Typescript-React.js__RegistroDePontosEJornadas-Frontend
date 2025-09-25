@@ -1,10 +1,12 @@
+import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { deleteTimeEntry } from "../../helpers/services";
 import EditButton from "../../../../../../components/buttons/EditButton/EditButton";
 import DeleteButton from "../../../../../../components/buttons/DeleteButton/DeleteButton";
 import { TimeEntriesTypesReverse } from "../../helpers/utils";
+import type { TimeEntry } from "../../../../../../types";
 
-export default function Table({ items }: { items: any }) {
+export default function Table({ items }: { items: TimeEntry[] }) {
   const navigate = useNavigate();
 
   return (
@@ -20,7 +22,7 @@ export default function Table({ items }: { items: any }) {
           </tr>
         </thead>
         <tbody>
-          {items.map((item: any) => (
+          {items.map((item: TimeEntry) => (
             <tr key={item.id}>
               <td>{item.employeeId}</td>
               <td>{item.employeeName}</td>

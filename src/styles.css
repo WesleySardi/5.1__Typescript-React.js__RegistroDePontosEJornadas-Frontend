@@ -28,14 +28,6 @@ body {
   min-height: 100vh;
 }
 
-.header,
-.footer {
-  padding: 1rem;
-  color: white;
-  text-align: center;
-  font-size: 14px;
-}
-
 /* General */
 
 /* Button */
@@ -66,48 +58,3 @@ button {
 }
 
 /* Button */
-
-/* Table */
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  height: 100%;
-}
-
-.table th,
-.table td {
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-}
-
-.table th {
-  background-color: rgb(160, 160, 160);
-}
-
-.table td {
-  background-color: rgb(255, 255, 255);
-  text-align: center;
-  border-bottom: rgb(228, 228, 228) 1px solid;
-}
-
-td nav a {
-  color: rgb(255, 0, 0);
-  text-decoration: none;
-}
-
-td nav a :hover {
-  color: rgb(155, 155, 155);
-  transition: 0.3s;
-}
-
-/* Table */
-
-/* Footer */
-
-.footer {
-  background-color: black;
-  height: 10%;
-}
-
-/* Footer */

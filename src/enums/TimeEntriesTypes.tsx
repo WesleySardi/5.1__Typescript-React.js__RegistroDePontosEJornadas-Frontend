@@ -3,3 +3,9 @@ export const TimeEntriesTypes = {
   Saída: 2,
   Intervalo: 3,
 } as const;
+
+export enum TimeEntriesTypesEnum {
+  Entrada = 1,
+  Saida = 2,
+  Intervalo = 3,
+}

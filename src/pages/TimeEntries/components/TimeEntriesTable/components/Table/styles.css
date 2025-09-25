@@ -1,0 +1,38 @@
+.table-container {
+  flex: 1;
+  overflow-y: auto;
+  background-color: rgb(255, 255, 255);
+  border: rgb(228, 228, 228) 1px solid;
+  border-radius: 5px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  height: 100%;
+  min-width: 600px;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+}
+
+.table th {
+  background-color: rgb(160, 160, 160);
+}
+
+.table td {
+  text-align: center;
+  border-bottom: rgb(228, 228, 228) 1px solid;
+}
+
+td nav a {
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+}
+
+td nav a :hover {
+  color: rgb(155, 155, 155);
+  transition: 0.3s;
+}

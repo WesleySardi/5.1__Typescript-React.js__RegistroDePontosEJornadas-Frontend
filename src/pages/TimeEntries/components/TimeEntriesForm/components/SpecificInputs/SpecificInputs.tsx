@@ -11,7 +11,7 @@ export default function SpecificInputs({
   errors: FieldErrors<ITimeEntryFormData>;
 }) {
   return (
-    <>
+    <div className="secondDiv">
       <FormField
         label="Data"
         error={errors.timestamp}
@@ -32,6 +32,6 @@ export default function SpecificInputs({
           <option value="3">Intervalo</option>
         </select>
       </FormField>
-    </>
+    </div>
   );
 }

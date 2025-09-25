@@ -10,7 +10,7 @@ export default function FilterSection({
   setFrom,
   to,
   setTo,
-  setPage,
+  onSearch,
 }: IFilterSectionProps) {
   return (
     <div className="filters">
@@ -18,7 +18,7 @@ export default function FilterSection({
         <select
           className="typeFilterSelect"
           value={typeFilter ?? ""}
-          onChange={(e) => setTypeFilter(e.target.value || undefined)}
+          onChange={(e) => setTypeFilter(e.target.value)}
         >
           <option value="">Todos</option>
           <option value="1">Entrada</option>
@@ -33,7 +33,7 @@ export default function FilterSection({
             className="dateFilterInput"
             type="date"
             value={from ?? ""}
-            onChange={(e) => setFrom(e.target.value || undefined)}
+            onChange={(e) => setFrom(e.target.value)}
           />
         </label>
         <FontAwesomeIcon icon={faArrowRight} size="2xs" color="grey" />
@@ -42,12 +42,12 @@ export default function FilterSection({
             className="dateFilterInput"
             type="date"
             value={to ?? ""}
-            onChange={(e) => setTo(e.target.value || undefined)}
+            onChange={(e) => setTo(e.target.value)}
           />
         </label>
       </div>
 
-      <FilterButton method={() => setPage(1)} />
+      <FilterButton method={onSearch} />
     </div>
   );
 }

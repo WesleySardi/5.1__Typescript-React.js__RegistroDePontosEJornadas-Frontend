@@ -5,5 +5,5 @@ export interface IFilterSectionProps {
   setFrom: (value: string) => void;
   to: string;
   setTo: (value: string) => void;
-  setPage: (page: number) => void;
+  onSearch: () => void;
 }

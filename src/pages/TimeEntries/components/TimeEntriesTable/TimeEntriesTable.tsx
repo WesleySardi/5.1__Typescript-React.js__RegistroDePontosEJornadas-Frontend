@@ -15,24 +15,42 @@ export default function TimeEntriesTable() {
   const [from, setFrom] = useState<string>("");
   const [to, setTo] = useState<string>("");
 
-  const { data, isLoading, isError } = useQuery<
+  const [filters, setFilters] = useState({
+    type: "",
+    from: "",
+    to: "",
+  });
+
+  const { data, isLoading, isError, refetch } = useQuery<
     PagedResult<TimeEntry>,
     unknown,
     PagedResult<TimeEntry>
   >({
-    queryKey: ["timeEntries", { page, pageSize, typeFilter, from, to }],
+    queryKey: ["timeEntries", { page, pageSize, filters }],
     queryFn: () =>
       getTimeEntries({
         page,
         pageSize,
-        type: typeFilter,
-        from: from ? new Date(from).toISOString() : undefined,
-        to: to ? new Date(to).toISOString() : undefined,
+        type: filters.type || undefined,
+        from: filters.from ? new Date(filters.from) : undefined,
+        to: filters.to ? new Date(filters.to) : undefined,
       }),
+    enabled: true,
+    refetchOnWindowFocus: false,
   });
 
   const items: TimeEntry[] = data?.items ?? [];
   const totalPages: number = data?.totalPages ?? 1;
+
+  const handleSearch = () => {
+    setFilters({
+      type: typeFilter,
+      from: from,
+      to: to,
+    });
+    setPage(1);
+    refetch();
+  };
 
   return (
     <LoadingOrErrorInfo
@@ -50,8 +68,8 @@ export default function TimeEntriesTable() {
               setFrom,
               to,
               setTo,
-              setPage,
             }}
+            onSearch={handleSearch}
           />
 
           <Table {...{ items }} />

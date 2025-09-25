@@ -1,11 +1,18 @@
 import { api } from "../../../../../api";
 import type { TimeEntryListResponse } from "../../../../../types";
+import { handleApiRequest } from "../../../../../utils/utils";
 
 export async function getTimeEntries(params?: Record<string, any>) {
-  const res = await api.get<TimeEntryListResponse>("/timeentries", { params });
-  return res.data;
+  return handleApiRequest(() =>
+    api
+      .get<TimeEntryListResponse>("/timeentries", { params })
+      .then((res) => res.data)
+  );
 }
 
 export async function deleteTimeEntry(id: string) {
-  await api.delete(`/timeentries/${id}`);
+  return handleApiRequest(
+    () => api.delete(`/timeentries/${id}`),
+    "Registro deletado com sucesso!"
+  );
 }

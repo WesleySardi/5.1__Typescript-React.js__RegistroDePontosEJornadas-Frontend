@@ -20,11 +20,8 @@ export default function DeleteButton({
     mutationFn: (id: string) => deleteMethod(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["timeEntries"] });
-      toast.success("Registro excluído com sucesso!");
     },
-    onError: () => {
-      toast.error("Erro ao excluir registro!");
-    },
+    onError: () => {},
   });
 
   function handleDelete(id: string) {

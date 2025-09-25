@@ -1,16 +1,23 @@
 import { api } from "../../../../../api";
 import type { TimeEntry, TimeEntryCreateDTO } from "../../../../../types";
+import { handleApiRequest } from "../../../../../utils/utils";
 
 export async function getTimeEntry(id: string) {
-  const res = await api.get<TimeEntry>(`/timeentries/${id}`);
-  return res.data;
+  return handleApiRequest(() =>
+    api.get<TimeEntry>(`/timeentries/${id}`).then((res) => res.data)
+  );
 }
 
 export async function createTimeEntry(payload: TimeEntryCreateDTO) {
-  const res = await api.post<TimeEntry>("/timeentries", payload);
-  return res.data;
+  return handleApiRequest(
+    () => api.post<TimeEntry>("/timeentries", payload).then((res) => res.data),
+    "Registro criado com sucesso!"
+  );
 }
 
 export async function updateTimeEntry(id: string, payload: TimeEntryCreateDTO) {
-  await api.put(`/timeentries/${id}`, payload);
+  return handleApiRequest(
+    () => api.put(`/timeentries/${id}`, payload),
+    "Registro atualizado com sucesso!"
+  );
 }

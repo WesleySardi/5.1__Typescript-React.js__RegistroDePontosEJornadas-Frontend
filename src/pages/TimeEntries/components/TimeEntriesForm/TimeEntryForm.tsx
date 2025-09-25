@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate, useParams } from "react-router-dom";
-import type { TimeEntryCreateDTO } from "../../../../types";
+import type { TimeEntry, TimeEntryCreateDTO } from "../../../../types";
 import FormActions from "./components/FormActions/FormActions";
 import NormalInputs from "./components/NormalInputs/NormalInputs";
 import SpecificInputs from "./components/SpecificInputs/SpecificInputs";
@@ -41,17 +41,17 @@ export default function TimeEntryForm() {
     resolver: zodResolver(schema),
   });
 
-  const { data: existing } = useQuery({
+  const { data: existing } = useQuery<TimeEntry | null>({
     queryKey: ["timeEntry", id],
     queryFn: () => (id ? getTimeEntry(id) : Promise.resolve(null)),
     enabled: !!id,
   });
 
-  const createMut = useMutation({
+  const createMut = useMutation<TimeEntry, unknown, TimeEntryCreateDTO>({
     mutationFn: (payload: TimeEntryCreateDTO) =>
       createTimeEntry({
         ...payload,
-        timestamp: new Date(payload.timestamp).toISOString(),
+        timestamp: payload.timestamp,
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["timeEntries"] });
@@ -59,7 +59,11 @@ export default function TimeEntryForm() {
     },
   });
 
-  const updateMut = useMutation({
+  const updateMut = useMutation<
+    void,
+    unknown,
+    { id: string; payload: TimeEntryCreateDTO }
+  >({
     mutationFn: ({
       id,
       payload,
@@ -69,7 +73,7 @@ export default function TimeEntryForm() {
     }) =>
       updateTimeEntry(id, {
         ...payload,
-        timestamp: new Date(payload.timestamp).toISOString(),
+        timestamp: payload.timestamp,
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["timeEntries"] });
@@ -91,7 +95,11 @@ export default function TimeEntryForm() {
     if (!existing) return;
 
     const dt: Date = new Date(existing.timestamp);
-    const localDatetime: string = dt.toISOString().slice(0, 16);
+    const pad = (n: number) => n.toString().padStart(2, "0");
+
+    const localDatetime = `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(
+      dt.getDate()
+    )}T${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
 
     const fields = {
       employeeId: existing.employeeId,
@@ -113,13 +121,8 @@ export default function TimeEntryForm() {
 
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="formDiv">
-          <div className="firstDiv">
-            <NormalInputs {...{ errors, register }} />
-          </div>
-
-          <div className="secondDiv">
-            <SpecificInputs {...{ errors, register }} />
-          </div>
+          <NormalInputs {...{ errors, register }} />
+          <SpecificInputs {...{ errors, register }} />
         </div>
 
         <FormActions {...{ createMut, updateMut }} />

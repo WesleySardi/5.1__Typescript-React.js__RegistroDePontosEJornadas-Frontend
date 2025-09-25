@@ -12,7 +12,7 @@ export default function NormalInputs({
   errors: FieldErrors<ITimeEntryFormData>;
 }) {
   return (
-    <>
+    <div className="firstDiv">
       <FormField
         label="Código"
         error={errors.employeeId}
@@ -51,6 +51,6 @@ export default function NormalInputs({
         classNameDiv={"mainFormDivs"}
         classNameTextArea={"defaultTextArea normalInputs"}
       />
-    </>
+    </div>
   );
 }
