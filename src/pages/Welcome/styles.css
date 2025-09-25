@@ -1,0 +1,15 @@
+.welcomeComponent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex: 1;
+}
+
+.welcomeComponent span {
+  font-size: 5vw;
+  color: white;
+  margin-bottom: 2%;
+}

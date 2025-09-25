@@ -1,0 +1,16 @@
+.welcomeButton {
+  all: unset; /* remove todos os estilos padrão */
+  font-size: 1.2rem;
+  padding: 1%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  cursor: pointer; /* adiciona o ponteiro de volta */
+  display: inline-block; /* para respeitar padding */
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.welcomeButton:hover {
+  filter: brightness(0.8);
+  transition: filter 0.3s;
+}

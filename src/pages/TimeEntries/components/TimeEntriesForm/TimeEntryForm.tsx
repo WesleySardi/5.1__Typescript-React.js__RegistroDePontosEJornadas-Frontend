@@ -36,6 +36,7 @@ export default function TimeEntryForm() {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -92,28 +93,37 @@ export default function TimeEntryForm() {
   };
 
   useEffect(() => {
-    if (!existing) return;
+    if (id && existing) {
+      const dt: Date = new Date(existing.timestamp);
+      const pad = (n: number) => n.toString().padStart(2, "0");
 
-    const dt: Date = new Date(existing.timestamp);
-    const pad = (n: number) => n.toString().padStart(2, "0");
+      const localDatetime = `${dt.getFullYear()}-${pad(
+        dt.getMonth() + 1
+      )}-${pad(dt.getDate())}T${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
 
-    const localDatetime = `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(
-      dt.getDate()
-    )}T${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
+      const fields = {
+        employeeId: existing.employeeId,
+        employeeName: existing.employeeName,
+        timestamp: localDatetime,
+        type: existing.type,
+        location: existing.location ?? "",
+        notes: existing.notes ?? "",
+      };
 
-    const fields = {
-      employeeId: existing.employeeId,
-      employeeName: existing.employeeName,
-      timestamp: localDatetime,
-      type: existing.type,
-      location: existing.location ?? "",
-      notes: existing.notes ?? "",
-    };
-
-    Object.entries(fields).forEach(([key, value]) =>
-      setValue(key as keyof FormData, value)
-    );
-  }, [existing, setValue]);
+      Object.entries(fields).forEach(([key, value]) =>
+        setValue(key as keyof FormData, value)
+      );
+    } else {
+      reset({
+        employeeId: "",
+        employeeName: "",
+        timestamp: "",
+        type: "Entrada",
+        location: "",
+        notes: "",
+      });
+    }
+  }, [id, existing, setValue, reset]);
 
   return (
     <div className="mainDiv">
