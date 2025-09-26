@@ -75,7 +75,7 @@ No arquivo `src/api.ts`, ajuste a URL base da API ASP.NET Core:
 ```ts
 import axios from "axios";
 
-const BASE = "https://localhost:44377/api";
+const BASE = "https://localhost:7102/api";
 
 export const api = axios.create({
   baseURL: BASE,
@@ -274,5 +274,6 @@ src_
 Desenvolvido por **Wesley Erik Sardi**
 
 🚀 Frontend em **React + TypeScript** para integração com API ASP.NET Core
+
 
 
