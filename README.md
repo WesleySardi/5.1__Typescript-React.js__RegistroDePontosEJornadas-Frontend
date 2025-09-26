@@ -47,6 +47,20 @@ Este projeto consome a API ASP.NET Core e fornece uma interface intuitiva para C
 
 ---
 
+## 🚀 Telas criadas
+
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/24dfdb55-5d3f-415a-8ce0-c286a579cb19" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/47260a6e-cf4c-4402-83f9-7dcf239beadd" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/cc26b238-1807-4fa6-b34c-905937f4b54a" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/312a3474-d859-4ec0-bce2-bf20c2bedf29" />
+
+
+---
+
 ## ▶️ Como Rodar o Projeto
 
 ### 1. Instalar ferramentas
@@ -274,6 +288,7 @@ src_
 Desenvolvido por **Wesley Erik Sardi**
 
 🚀 Frontend em **React + TypeScript** para integração com API ASP.NET Core
+
 
 
 
