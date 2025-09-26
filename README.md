@@ -272,5 +272,7 @@ src_
 ## 🧑‍💻 Autor
 
 Desenvolvido por **Wesley Erik Sardi**
+
 🚀 Frontend em **React + TypeScript** para integração com API ASP.NET Core
+
 
