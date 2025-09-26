@@ -5,10 +5,12 @@
   align-items: center;
   flex: 1;
   justify-content: center;
+  color: white;
 }
 
 .div-error span {
   margin-top: 1%;
+  font-size: 2vw;
 }
 
 .spinning {

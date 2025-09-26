@@ -27,14 +27,25 @@ export default function TimeEntriesTable() {
     PagedResult<TimeEntry>
   >({
     queryKey: ["timeEntries", { page, pageSize, filters }],
-    queryFn: () =>
-      getTimeEntries({
+    queryFn: async () => {
+      const result = await getTimeEntries({
         page,
         pageSize,
         type: filters.type || undefined,
         from: filters.from ? new Date(filters.from) : undefined,
         to: filters.to ? new Date(filters.to) : undefined,
-      }),
+      });
+
+      return (
+        result ?? {
+          items: [],
+          totalPages: 1,
+          totalCount: 0,
+          page,
+          pageSize,
+        }
+      );
+    },
     enabled: true,
     refetchOnWindowFocus: false,
   });

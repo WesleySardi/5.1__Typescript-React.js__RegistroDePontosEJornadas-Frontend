@@ -44,16 +44,26 @@ export default function TimeEntryForm() {
 
   const { data: existing } = useQuery<TimeEntry | null>({
     queryKey: ["timeEntry", id],
-    queryFn: () => (id ? getTimeEntry(id) : Promise.resolve(null)),
+    queryFn: () => {
+      try {
+        return id ? getTimeEntry(id) : Promise.resolve(null);
+      } catch (error) {
+        return null;
+      }
+    },
     enabled: !!id,
   });
 
   const createMut = useMutation<TimeEntry, unknown, TimeEntryCreateDTO>({
-    mutationFn: (payload: TimeEntryCreateDTO) =>
-      createTimeEntry({
+    mutationFn: async (payload: TimeEntryCreateDTO) => {
+      const res = await createTimeEntry({
         ...payload,
         timestamp: payload.timestamp,
-      }),
+      });
+
+      if (!res) throw new Error("Falha ao criar registro.");
+      return res;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["timeEntries"] });
       navigate("/timeEntries/list");
@@ -65,17 +75,21 @@ export default function TimeEntryForm() {
     unknown,
     { id: string; payload: TimeEntryCreateDTO }
   >({
-    mutationFn: ({
+    mutationFn: async ({
       id,
       payload,
     }: {
       id: string;
       payload: TimeEntryCreateDTO;
-    }) =>
-      updateTimeEntry(id, {
+    }) => {
+      const res = await updateTimeEntry(id, {
         ...payload,
         timestamp: payload.timestamp,
-      }),
+      });
+
+      if (!res) throw new Error("Falha ao atualizar o registro.");
+      return;
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["timeEntries"] });
       navigate("/timeEntries/list");
